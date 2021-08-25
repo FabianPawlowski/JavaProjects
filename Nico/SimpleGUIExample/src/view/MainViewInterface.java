@@ -9,7 +9,7 @@ public interface MainViewInterface {
 
     public void refresh();
 
-    public void setWinner(); 
+    public void setWinner(String gewinner); 
 
 }
 

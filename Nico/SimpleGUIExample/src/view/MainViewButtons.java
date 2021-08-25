@@ -249,7 +249,7 @@ public class MainViewButtons implements ActionListener, MainViewInterface{
 
 
     @Override
-    public void setWinner() {
+    public void setWinner(String gewinner) {
        // TODO Auto-generated method stub
         oben1.setEnabled(false);
         oben2.setEnabled(false);
@@ -260,12 +260,7 @@ public class MainViewButtons implements ActionListener, MainViewInterface{
         unten1.setEnabled(false);
         unten2.setEnabled(false);
         unten3.setEnabled(false);
-
-        if (spieler) {
-            gewinner.setText("X hat gewonnen!");
-        } else {
-            gewinner.setText("O hat gewonnen!");
-        }
+        this.gewinner.setText(gewinner);
     }
     
 }

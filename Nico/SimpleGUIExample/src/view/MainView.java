@@ -204,7 +204,7 @@ public class MainView implements ActionListener, MainViewInterface {
     }
 
     @Override
-    public void setWinner() {
+    public void setWinner(String gewinner) {
         // TODO Auto-generated method stub
         
     }
