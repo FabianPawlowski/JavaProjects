@@ -1,6 +1,6 @@
 import control.Controller;
 
-public class App {
+public class AppNico {
     public static void main(String[] args) throws Exception {
     new Controller();
 
