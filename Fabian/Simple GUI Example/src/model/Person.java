@@ -1,38 +1,45 @@
 package model;
 
 public class Person {
-    private String vorname, nachname, adresse;
-    private int alter;
+    String vorname, nachname, teamName;
+    int alter;
 
-    public Person(String vorname, String nachname, String adresse, int alter) {
+    public Person(String vorname, String nachname, String teamName, int alter) {
         this.vorname = vorname;
         this.nachname = nachname;
-        this.adresse = adresse;
+        this.teamName = teamName;
         this.alter = alter;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getTeamName() {
+        return teamName;
     }
+
     public int getAlter() {
         return alter;
     }
+
     public String getNachname() {
         return nachname;
     }
+
     public String getVorname() {
         return vorname;
     }
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
+
     public void setAlter(int alter) {
         this.alter = alter;
     }
+
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
+
     public void setVorname(String vorname) {
         this.vorname = vorname;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 }
