@@ -18,7 +18,7 @@ public class MainView {
 
         tabbedPane = new TabbedPane(this);
 
-        frame.add(tabbedPane, BorderLayout.CENTER);
+        frame.add(tabbedPane, BorderLayout.LEFT);
         frame.pack();
         frame.setVisible(true);
     }
