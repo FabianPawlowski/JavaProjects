@@ -44,7 +44,27 @@ public class Team {
         return member;
     }
 
-    public void deleteMember() {
-
+    public void setTeamname(String neuerName) {
+        this.teamName = neuerName;
     }
+
+    public void deleteMember(String memberId) {
+        // TODO For schleife über Member und Löschen vom übergebenen Member
+        for (int i = 0; i < member.size(); i++) {
+            if (member.get(i).toString().equals(memberId)) {
+                member.remove(i);
+            }
+
+        }
+    }
+
+    public void addMember(String memberId) {
+        for (int i = 0; i < member.size(); i++) {
+            if (member.get(i).toString().equals(memberId)) {
+                member.add(memberId);
+            }
+            // es gibt schon die Methode addToTeam()
+        }
+    }
+
 }

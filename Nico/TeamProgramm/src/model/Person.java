@@ -7,16 +7,16 @@ public class Person extends JPanel implements ActionListener {
 
     String id;
     String vorname, nachname;
-    int alter;
+    String alter;
     boolean isteamleiter;
     String teamname, kennzeichen;
 
-    public Person(String id, String vorname, String nachname, int alter, String teamname, boolean isteamleiter,
+    public Person(String id, String vorname, String nachname, String alter2, String teamname, boolean isteamleiter,
             String kennzeichen) {
         this.id = id;
         this.vorname = vorname;
         this.nachname = nachname;
-        this.alter = alter;
+        this.alter = alter2;
         this.isteamleiter = isteamleiter;
         this.teamname = teamname;
         this.kennzeichen = kennzeichen;
@@ -42,7 +42,7 @@ public class Person extends JPanel implements ActionListener {
         return nachname;
     }
 
-    public int getAlter() {
+    public String getAlter() {
         return alter;
     }
 
@@ -61,9 +61,8 @@ public class Person extends JPanel implements ActionListener {
     // set Methoden
 
     public void setID(String id) {
-        this.id =  id;
+        this.id = id;
     }
-
 
     public void setVorname(String vorname) {
         this.vorname = vorname;
@@ -73,8 +72,8 @@ public class Person extends JPanel implements ActionListener {
         this.nachname = nachname;
     }
 
-    public void setAlter(int alter) {
-        this.alter = alter;
+    public void setAlter(String alter2) {
+        this.alter = alter2;
     }
 
     public void setTeamName(String teamName) {

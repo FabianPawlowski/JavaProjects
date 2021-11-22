@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import model.Person;
 import model.Team;
@@ -30,14 +31,11 @@ public class OutputPanel extends JPanel implements ActionListener {
 
         teamsField = new JComboBox<String>();
         teamsField.setBounds(150, 10, 110, 20);
-        // teamsField.addItem("Rot");
-        // teamsField.addItem("Blau");
-        // teamsField.addItem("Gelb");
         add(teamsField);
         teamsField.addActionListener(this);
 
         schliessen = new JButton("Schließen");
-        schliessen.setBounds(20, 170, 130, 30);
+        schliessen.setBounds(20, 235, 130, 30);
         add(schliessen);
         schliessen.addActionListener(this);
 
@@ -48,6 +46,18 @@ public class OutputPanel extends JPanel implements ActionListener {
         teamsField.addItem(teamname);
     }
 
+    public void refresh() {
+        String s = teamsField.getSelectedItem().toString();
+        teamsField.setSelectedItem(s);
+        view.getController().createViewtable(s);
+        tabelle.revalidate();
+    }
+
+    public void clearCombobox() {
+        teamsField.removeAllItems();
+        System.out.println("cleared");
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
@@ -55,7 +65,12 @@ public class OutputPanel extends JPanel implements ActionListener {
             System.exit(0);
         }
         if (e.getSource() == teamsField) {
-            view.getController().createViewtable(teamsField.getSelectedItem().toString());
+            if ((teamsField.getSelectedItem() != null)) {
+                view.getController().createViewtable(teamsField.getSelectedItem().toString());
+                tabelle.setVisible(true);
+            } else {
+                tabelle.setVisible(false);
+            }
         }
     }
 
@@ -81,9 +96,45 @@ public class OutputPanel extends JPanel implements ActionListener {
         }
         tabelle = new JTable(mitglieder, header);
         // tabelle.setPreferredScrollableViewportSize(new Dimension(500, 50));
+
         scrollPane = new JScrollPane(tabelle);
         tabelle.setFillsViewportHeight(true);
-        scrollPane.setBounds(10, 40, 280, 120);
+        tabelle.setEnabled(false);
+
+        scrollPane.setBounds(10, 40, 280, 180);
         add(scrollPane);
     }
+
+    public void modifyTeam(String teamName, String neuerName) {
+        for (int i = 0; i < teamsField.getItemCount(); i++) {
+            if (teamsField.getItemAt(i).equals(teamName)) {
+                teamsField.insertItemAt(neuerName, i);
+                teamsField.removeItemAt(i + 1);
+                teamsField.setSelectedIndex(i);
+            }
+        }
+    }
+
+    public void deleteTeam(String teamname) {
+        for (int i = 0; i < teamsField.getItemCount(); i++) {
+            if (teamsField.getItemAt(i).equals(teamname)) {
+                teamsField.removeItemAt(i);
+            }
+        }
+    }
+
+    public void setTableToFirst() {
+        if (teamsField.getItemCount() == 0) {
+
+            tabelle.clearSelection();
+            tabelle.repaint();
+
+        } else {
+            teamsField.setSelectedIndex(0);
+        }
+    }
+
+    public void safeChangedUser() {
+    }
+
 }
